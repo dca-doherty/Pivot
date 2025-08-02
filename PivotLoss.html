@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pivot from Loss to Life - Carol A. Taylor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Georgia, serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Top Banner */
+        .top-banner {
+            background: #333;
+            color: white;
+            padding: 0.5rem 0;
+            text-align: center;
+            font-size: 0.9rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1001;
+        }
+        
+        .top-banner p {
+            margin: 0;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #E63A6B 0%, #C92A5B 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 38px;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        
+        nav a:hover {
+            opacity: 0.8;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1454391304352-2bf4678b1a7a?w=1600') center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+            margin-top: 38px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #E63A6B;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-weight: bold;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            background: #C92A5B;
+        }
+        
+        /* Book Section */
+        .book-section {
+            padding: 5rem 0;
+            background: #f8f9fa;
+        }
+        
+        .book-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .book-mockup {
+            position: relative;
+            perspective: 1000px;
+        }
+        
+        .book-cover {
+            width: 100%;
+            max-width: 350px;
+            height: 500px;
+            background: #E63A6B;
+            border-radius: 5px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            transform: rotateY(-10deg);
+            transition: transform 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .book-cover:hover {
+            transform: rotateY(0deg);
+        }
+        
+        .book-cover h2 {
+            font-size: 3rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+        
+        .book-cover .subtitle {
+            font-size: 1.1rem;
+            font-weight: 300;
+            margin-bottom: auto;
+        }
+        
+        .book-cover .author {
+            font-size: 1.8rem;
+            font-weight: 300;
+            margin-top: auto;
+        }
+        
+        .book-cover::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40%;
+            background: url('https://images.unsplash.com/photo-1454391304352-2bf4678b1a7a?w=600') center/cover;
+            opacity: 0.7;
+        }
+        
+        .book-details h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #E63A6B;
+        }
+        
+        .book-details p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 5rem 0;
+            background: white;
+        }
+        
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .author-image {
+            width: 300px;
+            height: 300px;
+            background: url('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400') center/cover;
+            border-radius: 50%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .about-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #E63A6B;
+        }
+        
+        /* Journey Section */
+        .journey {
+            padding: 5rem 0;
+            background: #f8f9fa;
+        }
+        
+        .journey h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #E63A6B;
+        }
+        
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .timeline-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .timeline-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .timeline-item h3 {
+            color: #E63A6B;
+            margin-bottom: 1rem;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 5rem 0;
+            background: white;
+        }
+        
+        .testimonials h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #E63A6B;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .testimonial::before {
+            content: '"';
+            font-size: 4rem;
+            color: #E63A6B;
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            opacity: 0.3;
+        }
+        
+        .testimonial h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .testimonial .stars {
+            color: #FFA500;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .testimonial p {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: #E63A6B;
+        }
+        
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, #E63A6B 0%, #C92A5B 100%);
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-white {
+            background: white;
+            color: #E63A6B;
+        }
+        
+        .btn-white:hover {
+            background: #f8f9fa;
+        }
+        
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #E63A6B;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-section a:hover {
+            opacity: 1;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #555;
+            padding-top: 2rem;
+            margin-top: 2rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .top-banner {
+                font-size: 0.8rem;
+                padding: 0.7rem 1rem;
+            }
+            
+            header {
+                top: 50px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .book-container,
+            .about-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .author-image {
+                margin: 0 auto;
+            }
+            
+            nav ul {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Banner -->
+    <div class="top-banner">
+        <div class="container">
+            <p>⭐⭐⭐⭐⭐ Now Available on Amazon - "Much Needed Healing" - Nicole Nash</p>
+        </div>
+    </div>
+    
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">Pivot from Loss to Life</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#book">Book</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#journey">Journey</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Pivot from Loss to Life</h1>
+                <p>A Journey of Transformation Through Isaiah 61</p>
+                <p>By Carol A. Taylor</p>
+                <a href="#book" class="btn">Discover the Book</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Book Section -->
+    <section id="book" class="book-section">
+        <div class="container">
+            <div class="book-container">
+                <div class="book-mockup">
+                    <div class="book-cover">
+                        <h2>Pivot From Loss to Life</h2>
+                        <p class="subtitle">Isaiah 61 - A Roadmap to Recovery</p>
+                        <p class="author">Carol Taylor</p>
+                    </div>
+                </div>
+                <div class="book-details">
+                    <h2>Transform Your Grief Into Growth</h2>
+                    <p>When Carol Taylor's husband Jim died suddenly, she found herself devastated and alone. But through the promises of Isaiah 61, she discovered a blueprint for healing that transformed her mourning into joy.</p>
+                    <p>This powerful book shares Carol's personal journey and provides practical guidance for anyone experiencing loss. Through biblical insights and honest storytelling, you'll learn how to:</p>
+                    <ul style="margin-left: 2rem; margin-bottom: 1.5rem;">
+                        <li>Navigate the valley of grief with God's promises</li>
+                        <li>Exchange ashes for beauty and mourning for joy</li>
+                        <li>Rebuild after devastating loss</li>
+                        <li>Find purpose in your pain</li>
+                        <li>Become an oak of righteousness planted by the Lord</li>
+                    </ul>
+                    <a href="https://www.amazon.com/Pivot-Loss-Life-Roadmap-Recovery/dp/B0DTR6WWZ1" target="_blank" class="btn">Get Your Copy on Amazon</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-container">
+                <div class="author-image"></div>
+                <div class="about-content">
+                    <h2>About Carol A. Taylor</h2>
+                    <p>Carol A. Taylor is a woman who has walked through the valley of loss and emerged with a powerful testimony of God's faithfulness. As a single mother who raised two college students while working demanding jobs, she understood hardship long before losing her beloved husband Jim.</p>
+                    <p>For 15 years, Isaiah 61 was Carol's life chapter, though she didn't fully understand why until Jim's sudden passing. Through her grief journey, God revealed this scripture as a blueprint for healing—not just for her, but for anyone facing loss.</p>
+                    <p>Carol's story is one of miraculous provision, from witnessing healing prayers answered to experiencing God's double portion after loss. Now she shares her journey to help others pivot from their own losses to abundant life.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Journey Section -->
+    <section id="journey" class="journey">
+        <div class="container">
+            <h2>The Journey from Loss to Life</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>Anointed for Purpose</h3>
+                    <p>God chooses and equips us even in our brokenness. You are anointed to bring good news and bind up broken hearts.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Year of the Lord's Favor</h3>
+                    <p>Declare victory over the enemy's lies. This is your year of grace, acceptance, and God's special favor.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Beauty for Ashes</h3>
+                    <p>Exchange mourning for gladness, receive the oil of joy, and put on the garment of praise.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Rebuild and Restore</h3>
+                    <p>Rise from devastation to become the repairer of the breach, restoring what was lost for generations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>Reader Reviews</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <h4>Much Needed Healing</h4>
+                    <p>"This book has helped me tremendously with my faith and healing journey. It gave me a new perspective on how God wants to use my losses and turn them into victory. God doesn't waste anything and this book gave me new insight on our Gracious and Loving Father."</p>
+                    <div class="testimonial-author">- Nicole Nash, Verified Purchase</div>
+                </div>
+                <div class="testimonial">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <h4>Very healing and helpful!</h4>
+                    <p>"This is a great book for anyone navigating loss!"</p>
+                    <div class="testimonial-author">- Amazon Customer, Verified Purchase</div>
+                </div>
+                <div class="testimonial">
+                    <p>"Christ makes beautiful things out of ashes and He is making you new and beautiful."</p>
+                    <div class="testimonial-author">- From the Book</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="cta">
+        <div class="container">
+            <h2>Begin Your Journey Today</h2>
+            <p>Let God transform your loss into life through the promises of Isaiah 61</p>
+            <div class="cta-buttons">
+                <a href="https://www.amazon.com/Pivot-Loss-Life-Roadmap-Recovery/dp/B0DTR6WWZ1" target="_blank" class="btn btn-white">Order on Amazon</a>
+                <a href="mailto:contact@pivotfromlosstolife.com" class="btn">Contact Carol</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About</h3>
+                    <ul>
+                        <li><a href="#about">About Carol</a></li>
+                        <li><a href="#book">About the Book</a></li>
+                        <li><a href="#journey">The Journey</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Study Guide</a></li>
+                        <li><a href="#">Isaiah 61 Study</a></li>
+                        <li><a href="#">Prayer Resources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <ul>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Speaking Requests</a></li>
+                        <li><a href="#">Newsletter</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Carol A. Taylor. All rights reserved. | Pivot from Loss to Life</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                const headerOffset = 100; // Account for fixed header and banner
+                const elementPosition = target.offsetTop;
+                const offsetPosition = elementPosition - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
