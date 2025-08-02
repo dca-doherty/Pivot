@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pivot from Loss to Life - Carol A. Taylor</title>
+    
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:title" content="Pivot from Loss to Life - Carol A. Taylor">
+    <meta property="og:description" content="Transform your grief into growth through the promises of Isaiah 61. A powerful journey of healing after loss.">
+    <meta property="og:image" content="https://dca-doherty.github.io/IMG_6069.jpeg">
+    <meta property="og:url" content="https://dca-doherty.github.io">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    
     <style>
         * {
             margin: 0;
@@ -186,7 +195,8 @@
             border-radius: 8px;
             box-shadow: 
                 0 30px 60px rgba(0,0,0,0.4),
-                inset 0 0 0 1px rgba(255,255,255,0.1);
+                inset 0 0 0 1px rgba(255,255,255,0.1),
+                inset -3px 0 10px rgba(0,0,0,0.2);
             display: flex;
             flex-direction: column;
             color: white;
@@ -196,6 +206,15 @@
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
+            background-image: 
+                linear-gradient(135deg, #E63A6B 0%, #E8456F 100%),
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(255,255,255,0.03) 2px,
+                    rgba(255,255,255,0.03) 4px
+                );
         }
         
         .book-cover::before {
@@ -447,6 +466,20 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.08);
             position: relative;
             transition: all 0.3s;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s forwards;
+        }
+        
+        .testimonial:nth-child(1) { animation-delay: 0.1s; }
+        .testimonial:nth-child(2) { animation-delay: 0.2s; }
+        .testimonial:nth-child(3) { animation-delay: 0.3s; }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .testimonial:hover {
@@ -677,6 +710,38 @@
                 justify-content: center;
             }
         }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #E63A6B;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 999;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background: #D42859;
+            transform: translateY(-3px);
+        }
     </style>
 </head>
 <body>
@@ -741,7 +806,20 @@
                         <li>Find purpose in your pain and become a blessing to others</li>
                         <li>Become an oak of righteousness, firmly planted by the Lord</li>
                     </ul>
+                    <p style="font-weight: 600; color: #E63A6B; margin-top: 1.5rem;">Available in Paperback and Kindle formats</p>
                     <a href="https://www.amazon.com/Pivot-Loss-Life-Roadmap-Recovery/dp/B0DTR6WWZ1" target="_blank" class="btn">Get Your Copy on Amazon</a>
+                    
+                    <!-- Book Sample Section -->
+                    <div style="margin-top: 2.5rem; padding: 2rem; background: #f8f9fa; border-radius: 10px; border-left: 4px solid #E63A6B;">
+                        <h3 style="color: #E63A6B; margin-bottom: 1rem; font-size: 1.5rem;">Read a Sample</h3>
+                        <p style="font-style: italic; line-height: 1.8; color: #555; margin-bottom: 1.5rem;">
+                            "When Jim died, I felt like my world had ended. I called 911 at 9am, they responded and transported him to the hospital and by noon he was dead. THIS IS THE MOST PAINFUL THING I HAVE EVER EXPERIENCED! BUT I knew God had called him home and it was Jim's time to go to heaven. I never blamed God, how could I? I became closer to Him because He was all I had..."
+                        </p>
+                        <p style="line-height: 1.8; color: #555;">
+                            "God is faithful even when we think He is not moving in our lives. HE IS ALWAYS faithful to His promises. Christ makes beautiful things out of ashes and He is making you new and beautiful."
+                        </p>
+                        <a href="#contact" class="btn" style="margin-top: 1.5rem; background: #E63A6B;">Get Updates & Free Resources</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -758,7 +836,8 @@
                     <h2>About Carol A. Taylor</h2>
                     <p>Carol A. Taylor is a woman who has walked through the valley of loss and emerged with a powerful testimony of God's faithfulness. As a single mother who raised two college students while working demanding jobs in medical management and teaching, she understood hardship long before losing her beloved husband Jim.</p>
                     <p>For 15 years, Isaiah 61 was Carol's life chapter, though she didn't fully understand why until Jim's sudden passing on October 18th. Through her grief journey, God revealed this scripture as a blueprint for healing—not just for her, but for anyone facing loss.</p>
-                    <p>Carol's story includes witnessing miraculous healings, experiencing God's supernatural provision, and learning to trust His promises even in the darkest valley. Now she shares her journey to help others pivot from their own losses to abundant life.</p>
+                    <p>Carol's story includes witnessing miraculous healings, experiencing God's supernatural provision, and learning to trust His promises even in the darkest valley. From seeing her friend Donna healed of psoriasis through prayer to experiencing God's double portion provision, Carol has lived the promises of Isaiah 61 in powerful ways.</p>
+                    <p>Now she shares her journey to help others pivot from their own losses to abundant life, knowing that God makes beautiful things out of ashes.</p>
                     <div class="social-links">
                         <a href="https://www.instagram.com/pivotfromlosstolife" target="_blank" class="social-link">
                             <span>📷</span> Follow on Instagram
@@ -824,6 +903,32 @@
         </div>
     </section>
 
+    <!-- Speaking Events Section -->
+    <section style="padding: 4rem 0; background: white;">
+        <div class="container" style="text-align: center;">
+            <h2 style="color: #E63A6B; margin-bottom: 1rem; font-size: 2.5rem;">Speaking & Ministry</h2>
+            <p style="font-size: 1.2rem; color: #666; margin-bottom: 2rem;">Invite Carol to share her testimony of God's faithfulness at your church or event</p>
+            <div style="background: #f8f9fa; padding: 2.5rem; border-radius: 15px; max-width: 600px; margin: 0 auto;">
+                <p style="font-size: 1.1rem; line-height: 1.8; color: #555;">Carol is available for speaking engagements, workshops, and ministry opportunities. Her powerful testimony of loss transformed into life through Isaiah 61 brings hope and healing to those walking through their own valleys.</p>
+                <a href="mailto:carol@pivotfromlosstolife.com?subject=Speaking Request" class="btn" style="margin-top: 1.5rem;">Request Carol as a Speaker</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter" style="background: #f8f9fa; padding: 4rem 0; text-align: center;">
+        <div class="container">
+            <h2 style="color: #E63A6B; margin-bottom: 1rem; font-size: 2.5rem;">Stay Connected</h2>
+            <p style="margin-bottom: 2rem; font-size: 1.2rem; color: #666;">Get encouragement and updates on your journey from loss to life</p>
+            <!-- IMPORTANT: Replace YOUR_FORM_ID with your actual Formspree form ID -->
+            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" style="max-width: 500px; margin: 0 auto; display: flex; gap: 0;">
+                <input type="email" name="email" placeholder="Enter your email" required style="padding: 1rem 1.5rem; flex: 1; border: 1px solid #ddd; border-radius: 25px 0 0 25px; font-size: 1rem;">
+                <button type="submit" class="btn" style="border-radius: 0 25px 25px 0; padding: 1rem 2rem;">Subscribe</button>
+            </form>
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: #999;">Join hundreds finding hope through Isaiah 61</p>
+        </div>
+    </section>
+
     <!-- CTA Section -->
     <section id="contact" class="cta">
         <div class="container">
@@ -861,7 +966,7 @@
                     <ul>
                         <li><a href="https://www.instagram.com/pivotfromlosstolife" target="_blank">Instagram</a></li>
                         <li><a href="https://youtube.com/@caroldoherty-l2x?si=utymU90OOzvs_wOU" target="_blank">YouTube</a></li>
-                        <li><a href="#contact">Contact Carol</a></li>
+                        <li><a href="mailto:carol@pivotfromlosstolife.com">Contact Carol</a></li>
                     </ul>
                 </div>
             </div>
@@ -870,6 +975,9 @@
             </div>
         </div>
     </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" aria-label="Back to top">↑</a>
 
     <script>
         // Smooth scrolling for navigation links
@@ -923,6 +1031,46 @@
                 }
             });
         });
+
+        // Back to Top Button
+        const backToTopButton = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 500) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+
+    <!-- Schema Markup for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Book",
+      "name": "Pivot from Loss to Life",
+      "author": {
+        "@type": "Person",
+        "name": "Carol A. Taylor"
+      },
+      "description": "Isaiah 61 - A Roadmap to Recovery. Transform your grief into growth through biblical promises.",
+      "isbn": "B0DTR6WWZ1",
+      "url": "https://www.amazon.com/Pivot-Loss-Life-Roadmap-Recovery/dp/B0DTR6WWZ1",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "reviewCount": "2"
+      }
+    }
     </script>
 </body>
 </html>
